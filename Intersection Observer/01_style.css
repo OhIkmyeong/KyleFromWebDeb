@@ -1,0 +1,15 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+.card-wrap{
+    display:flex; flex-flow:column nowrap;
+    justify-content:flex-start; align-items:flex-start;
+    gap:2rem;
+    font-size:2rem;}
+
+.card{
+    opacity:0;
+    padding:2em 4em; 
+    border:2px solid black; border-radius:.5rem;
+    transform:translateX(100px);
+    transition:150ms;}
+
+.card.show{opacity:1;transform:translateX(0);}
