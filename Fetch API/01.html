@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+</head>
+<body>
+    <!-- https://blog.webdevsimplified.com/2022-01/js-fetch-api/ -->
+    <!-- https://www.youtube.com/watch?v=cuEtnrL9-H0 -->
+
+    //https://jsonplaceholder.typicode.com/
+
+    <script>
+        async function show_data(){
+            const data = await fetch_data();
+            console.log(data); 
+        }
+
+        function fetch_data(){
+            return fetch('https://jsonplaceholder.typicode.com/users',{
+                method : "POST",
+                headers : {
+                    'Content-type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    name : "Moira O'Deorain",
+                    age : 48,
+                    material : 'Waifu'
+                })
+            })
+            .then(res => {
+                if(res.ok){
+                    console.log('fetch 성공!');
+                    return res.json();
+                }else{
+                    console.log('실패 ㅠ,ㅠ');
+                    return Promise.reject(res);
+                }
+            })
+            .catch(res => console.error(res.status));
+        }
+
+
+        show_data();
+        
+    </script>
+</body>
+</html>
